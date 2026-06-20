@@ -1,359 +1,136 @@
-# PVE Tools 9 🚀
-
-> [!WARNING]
-> 最新脚本版本3.0.0 加入了 Proxmox 安全软件源，请尽快更新脚本到最新版本避免影响机器安全！
+# PVE Tools Pro(原 PVE-Tools-9)
 
 <div align="center">
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[官网 / Docs](https://pve.oowo.cc) | [更新日志](https://pve.oowo.cc/update) | [FAQ](https://pve.oowo.cc/faq) | [English](./README_EN.md) | [日本語](./REAMDE-JP.md)
+
+[![License: GPL-3.0](https://img.shields.io/badge/License-GPL--3.0-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.html)
 [![Shell Script](https://img.shields.io/badge/Shell-Script-4EAA25?logo=gnu-bash&logoColor=white)](https://www.gnu.org/software/bash/)
-[![Proxmox VE](https://img.shields.io/badge/Proxmox-VE%209.0-E57000?logo=proxmox&logoColor=white)](https://www.proxmox.com/)
+[![Proxmox VE](https://img.shields.io/badge/Proxmox-VE%209.x-E57000?logo=proxmox&logoColor=white)](https://www.proxmox.com/)
 [![Debian](https://img.shields.io/badge/Debian-13%20(Trixie)-A81D33?logo=debian&logoColor=white)](https://www.debian.org/)
 
-**🌍 语言选择**
-
-[🇺🇸 English](./docs/README-EN.md) | [🇨🇳 中文](./README.md)
-
----
-```
-██████╗ ██╗   ██╗███████╗    ████████╗ ██████╗  ██████╗ ██╗     ███████╗     █████╗ 
-██╔══██╗██║   ██║██╔════╝    ╚══██╔══╝██╔═══██╗██╔═══██╗██║     ██╔════╝    ██╔══██╗
-██████╔╝██║   ██║█████╗         ██║   ██║   ██║██║   ██║██║     ███████╗    ╚██████║
-██╔═══╝ ╚██╗ ██╔╝██╔══╝         ██║   ██║   ██║██║   ██║██║     ╚════██║     ╚═══██║
-██║      ╚████╔╝ ███████╗       ██║   ╚██████╔╝╚██████╔╝███████╗███████║     █████╔╝
-╚═╝       ╚═══╝  ╚══════╝       ╚═╝    ╚═════╝  ╚═════╝ ╚══════╝╚══════╝     ╚════╝ 
-```
-
-**你的下一个简单好用，简洁易用的 PVE9 配置脚本**
-
-![展示](/images/main-shot.png)
+![产品截图](./images/main.png)
 
 </div>
 
----
-### 🚪 开门见山
-#### 中国大陆网络
+>[!CAUTION]
+> **Shell版本恢复更新公告**
+> 
+> 经过一个比较混乱的调整，我决定恢复更新 Shell 版本。
+> 
+> 该版本将继续维护，后续会根据用户反馈和需求进行更新。
+>
+> 如果想了解为何辗转两次，可以在这里了解详细: [为什么Go版本憋不出来?](https://pve.u3u.icu/blog/why-go-version-is-not-updating/)
 
-> [!WARNING]
-> 请不要多次拉取文件，无论镜像站还是源站。否则会被服务器拒绝导致影响心情。
+<!-- > [!CAUTION]
+> **Shell版本停更公告**
+> 
+> 感谢大家一直以来对 PVE-Tools-9 的支持。随着项目功能的不断增加，目前的 Shell 脚本代码量已突破 13000 行。
+> 
+> 受限于 Shell 语言本身的特性，继续在此基础上增加新功能或进行大规模修改，已经变得难以维护且容易引发不可预知的 Bug。
+> 
+> 因此，我决定暂缓当前 Shell 版本的新功能开发（但不会EOL），仅做极其重大的致命 Bug 修复。该仓库将保持原样，不会删库，大家依然可以正常使用现有功能。
+> 
+> `main` 分支（Shell 版本）发布 v8.8.8 后将停止更新，后续正式版本推出后将切到主main分支。
+> 我目前已经开启了底层基于 Go 语言 的全新版本重构计划，后续维护将迁移至 Go 重构版本（[beta-go](https://github.com/PVE-Tools/PVE-Tools-9/tree/beta-go) 分支），Go 版本将继续免费开源,新版本将带来更好的稳定性、更友好的交互以及更严谨的环境校验，敬请期待。 -->
 
-```
-bash <(curl -sSL https://ghfast.top/github.com/Mapleawaa/PVE-Tools-9/blob/main/PVE-Tools.sh)
-```
-#### 国际网络
-```
-bash <(curl -sSL https://github.com/Mapleawaa/PVE-Tools-9/blob/main/PVE-Tools.sh)
-```
 
-#### PVE7~8升级PVE9快捷工具
-新项目!! 快来看! 快速升级PVE9
-![PVE 8 Upgrade Helper](https://img.shields.io/badge/PVE%208%20Upgrade%20Helper-Quick%20Upgrade%20Tool-blue?style=for-the-badge&logo=proxmox&logoColor=white)
+## 快速开始
 
----
+### 使用前请先注意
 
-### 📖 项目简介
+本软件会做您明确告诉它要做的事情，无论那件事情多么荒谬或具有破坏性。
+您已被告知所有风险，并已独立决定使用本软件。从此刻起，您与您的数据之间唯一的屏障就是您自己的谨慎与备份策略。
 
-PVE Tools 9 是专为 Proxmox VE 9.0 设计的一键配置工具，基于 Debian 13 (Trixie) 系统。本工具旨在简化 PVE 的初始配置过程，提供友好的用户界面和安全的操作体验。
+最后提醒：**如果您仍然心存疑虑，请不要使用本软件。世界上有许多带有商业支持、附带责任保险的成熟 PVE 管理工具，您可以考虑购买它们。**
 
-<div align="center">
+> 本项目完全免费开源，维护全凭个人热情。提交 Issue 或提问前，请确认已完整阅读文档、页面告示及已有 Issue。
+> 不提供复现步骤、日志等有效信息的反馈，将被直接关闭。开源不等于当孙子，尊重是相互的。
 
-**脚本如果使用出现问题请直接发issue，我下课了会看并且修复**
-**如有好点子欢迎 PR！**
-
-更新日志
-[![Commits](https://img.shields.io/badge/Commits-查看提交历史-blue?style=flat-square&logo=github)](https://github.com/Mapleawaa/PVE-Tools-9/commits/)
-</div>
-
-### ✨ 主要特性
-
-- 🚀 **一键换源** - 自动配置清华大学镜像源，大幅提升下载速度
-- 🚫 **删除订阅弹窗** - 彻底消除烦人的订阅提醒
-- 💾 **存储优化** - 智能合并 local 与 local-lvm 存储
-- 🔄 **Swap 管理** - 可选删除 Swap 分区释放更多空间
-- 📦 **系统更新** - 安全的系统升级和清理
-- 📊 **系统监控** - 实时显示系统运行状况
-- 🔧 **硬件直通** - 轻松配置 PCI 设备直通功能
-- ⚙️ **CPU 电源管理** - 灵活调整 CPU 性能模式
-- 🌡️ **温度监控** - 实时显示 CPU 和硬盘温度
-- 🐙 **Ceph 支持** - 支持 ceph-squid 和 ceph-quincy 源
-- 🎨 **美观界面** - 彩色输出和友好的用户交互
-- 🛡️ **安全备份** - 操作前自动备份重要文件
-
-### 🎯 支持的功能
-
-| 功能 | 描述 | 推荐度 |
-|------|------|--------|
-| 🚀 更换软件源 | 配置清华镜像源，包含 Debian、PVE、Ceph 源 | ⭐⭐⭐⭐⭐ |
-| 🚫 删除订阅弹窗 | 移除"无有效订阅"提醒弹窗 | ⭐⭐⭐⭐⭐ |
-| 💾 合并存储 | 合并 local 与 local-lvm（适合小硬盘） | ⭐⭐⭐ |
-| 🔄 删除 Swap | 释放 Swap 空间给系统使用 | ⭐⭐⭐ |
-| 📦 系统更新 | 更新系统软件包到最新版本 | ⭐⭐⭐⭐ |
-| 📊 系统信息 | 查看 PVE 系统运行状态 | ⭐⭐⭐⭐ |
-| 🔧 硬件直通 | 配置 PCI 设备直通功能 | ⭐⭐⭐⭐ |
-| ⚙️ CPU 电源模式 | 调整 CPU 性能模式（节能/性能等） | ⭐⭐⭐ |
-| 🌡️ 温度监控 | 实时显示 CPU 和硬盘温度 | ⭐⭐⭐⭐ |
-| 🐙 Ceph 源 | 支持 ceph-squid 和 ceph-quincy 源 | ⭐⭐⭐ |
-| 🗑️ Ceph 卸载 | 完全移除 Ceph 相关组件 | ⭐⭐ |
-| 🐧 内核管理 | 检测、下载和切换系统内核版本 | ⭐⭐⭐⭐ |
-
-### 🚀 快速开始
-
-#### 系统要求
-
-- ✅ Proxmox VE 9.0 或更高版本
-- ✅ Debian 13 (Trixie) 基础系统
-- ✅ Root 权限
-- ✅ 网络连接
-
-#### 安装使用
-
+### cloudflare 短域名
 ```bash
-# 1. 下载脚本
-wget https://raw.githubusercontent.com/Mapleawaa/PVE-Tools-9/main/PVE-Tools.sh
+bash <(curl -sSL https://pve.oowo.cc/PVE-Tools.sh)
+```
 
-# 2. 添加执行权限
+### 中国大陆网络
+```bash
+bash <(curl -sSL https://ghfast.top/raw.githubusercontent.com/PVE-Tools/PVE-Tools-9/main/PVE-Tools.sh)
+```
+
+### 国际网络
+```bash
+bash <(curl -sSL https://raw.githubusercontent.com/PVE-Tools/PVE-Tools-9/main/PVE-Tools.sh)
+```
+
+### 本地下载运行
+```bash
+wget https://raw.githubusercontent.com/PVE-Tools/PVE-Tools-9/main/PVE-Tools.sh
 chmod +x PVE-Tools.sh
-
-# 3. 运行脚本
 sudo ./PVE-Tools.sh
 ```
+## 项目定位
 
-运行脚本后，您将看到包含以下选项的菜单：
-
-1. 🚀 更换软件源 - 配置清华大学镜像源
-2. 🚫 删除订阅弹窗 - 移除订阅提醒
-3. 💾 合并存储 - 合并 local 与 local-lvm
-4. 🔄 删除 Swap - 释放 Swap 空间
-5. 📦 系统更新 - 更新系统软件包
-6. 📊 系统信息 - 查看系统运行状态
-7. ⚡ 一键配置 - 自动执行换源、删除弹窗和系统更新
-8. 🔧 硬件直通配置 - 配置 PCI 设备直通
-9. ⚙️ CPU 电源模式 - 调整 CPU 性能模式
-10. 🌡️ 温度监控设置 - 添加温度监控功能
-11. 🗑️ 移除温度监控 - 移除温度监控功能
-12. 🐙 添加 ceph-squid 源 - 为 PVE 8/9 添加 Ceph 源
-13. 🐙 添加 ceph-quincy 源 - 为 PVE 7/8 添加 Ceph 源
-14. 🗑️ 卸载 Ceph - 完全移除 Ceph 组件
-15. 🐧 内核管理 - 检测、下载和切换系统内核版本
-
-> 💡 **调试模式**: 开发者和高级用户可以使用 `sudo ./PVE-Tools.sh --debug` 命令启动调试模式。此模式将跳过 PVE 系统检测，但会显示严重警告，因为在此模式下在非 PVE 系统上运行可能导致系统损坏。
-
-#### 一键配置（推荐新用户）
-
-```bash
-# 直接运行并选择选项 7 进行一键配置
-sudo ./PVE-Tools.sh
-# 然后输入 7 选择一键配置
-```
-
-### 📋 详细功能说明
-
-#### 🚀 更换软件源
-
-- **Debian 源**: 使用 DEB822 格式配置清华大学镜像
-- **企业源**: 自动注释 PVE 企业源（需付费）
-- **Ceph 源**: 配置 Ceph 存储镜像源
-- **无订阅源**: 添加适用于社区版的免费源
-- **CT 模板源**: 加速容器模板下载
+PVE Tools Pro 是一个面向 Proxmox VE 9.x 的交互式 Bash 工具。
+它不会替代 PVE 原生命令，而是把高频、易错、需要大量人工检查的运维动作收口为更清晰的菜单、更强的校验和更明确的高风险提示。
 
-#### 🚫 删除订阅弹窗
+| 功能模块 | 支持能力 |
+|---------|---------|
+| VM 生命周期运维 | 备份、恢复、配置导入导出、模板、克隆、Cloud-Init、磁盘管理、快照、启动顺序、网络调整、集群内迁移 |
+| 宿主机网络与防火墙 | bridge、Bond、VLAN、IPv4 / IPv6 / SLAAC / DHCP、PVE 防火墙、安全组、IPv6 助手、网络诊断工具箱 |
+| GPU / PCI 直通 | Intel 核显虚拟化与直通、NVIDIA 显卡管理、AMD 独显直通、AMD 核显直通、RDM、NVMe、控制器直通 |
+| 系统维护 | 换源、系统更新、PVE 8 → 9 升级、内核管理、GRUB 备份恢复、邮件通知、温控与基于 NUT 的 UPS 辅助能力 |
+| 第三方生态 | FastPVE、Modules、Community Scripts |
 
-自动修改 `proxmoxlib.js` 文件，彻底移除"No valid subscription"弹窗提醒。
+## 官网入口
 
-#### 💾 存储管理
+- 官方文档：https://pve.oowo.cc
+- 功能特性：https://pve.oowo.cc/features
+- 更新日志：https://pve.oowo.cc/update
+- 常见问题：https://pve.oowo.cc/faq
+- 数据误操作恢复参考：https://pve.oowo.cc/advanced/data-recovery-after-mistake
+- 宿主机网络 / 防火墙 / IPv6 专题：https://pve.oowo.cc/advanced/host-network-firewall-ipv6
+- VM 备份 / 迁移 / Cloud-Init 专题：https://pve.oowo.cc/advanced/vm-backup-migration-cloudinit
 
-**合并 local 与 local-lvm**:
-- 适用于小容量系统盘
-- 自动备份配置
-- 安全的 LVM 操作
+## Sponsor
 
-**删除 Swap 分区**:
-- 释放 Swap 空间给系统使用
-- 适合内存充足的环境
-- 自动修改 fstab 配置
+如果这个项目帮你节省了时间、避开了误操作，或者单纯想支持后续维护与继续更新，可以通过以下页面赞助：
 
-#### 🔧 硬件直通配置
+- Sponsor 页面：https://pve.oowo.cc/sponsor
+- 爱发电：https://afdian.com/a/cyrenenight
+- 微信：![微信赞赏码](./images/WeChat.jpg)
 
-**开启硬件直通**:
-- 自动检测 CPU 类型（Intel/AMD）
-- 配置 IOMMU 设置
-- 添加 VFIO 驱动模块
-- 设置显卡和音频设备黑名单
+赞助是对项目本身的支持，不等同于一对一技术服务。
 
-**关闭硬件直通**:
-- 恢复原始 GRUB 配置
-- 移除 VFIO 相关设置
-- 删除黑名单配置
+## Pay For Services
 
-#### ⚙️ CPU 电源模式
+如果你需要一对一远程协助、紧急救砖、网络配置、直通问题排查或完整代配，可以直接查看官方付费支持说明：
 
-支持多种 CPU 性能模式：
-- **Performance**: 高性能模式（默认）
-- **Powersave**: 节能模式
-- **Ondemand**: 按需调频模式
-- **Conservative**: 保守调频模式
-- **Schedutil**: 负载优化模式
+- 付费技术支持页面：https://pve.oowo.cc/pay
 
-#### 🌡️ 温度监控
+这里购买的是时间与交付结果，不是单纯赞助。
 
-**添加温度监控**:
-- 安装 lm-sensors、nvme-cli 等工具
-- 自动检测硬件传感器
-- 修改 PVE Web UI 显示 CPU/主板/硬盘温度
-- 支持 NVME 和 SATA 硬盘温度显示
+## 其它语言
 
-**删除温度监控**:
-- 恢复原始 PVE Web UI 文件
-- 移除相关工具和配置
+- English: [README_EN.md](./README_EN.md)
+- 日本語: [REAMDE-JP.md](./REAMDE-JP.md)
 
-#### 🐧 内核管理
+## 免责声明
 
-**内核版本检测**:
-- 自动检测当前系统内核版本
-- 显示可用内核版本列表
-- 支持 PVE 官方内核和测试版内核
+这是一个会真实调用 PVE 原生命令并修改宿主机 / VM 配置的运维工具。如果你在没有经过验证的备份、没有维护窗口、没有明确回滚方案的前提下执行高风险动作，可能导致管理面失联、业务中断、配置损坏或不可逆的数据损失。所有数据损失、恢复成本与第三方恢复费用均由实际操作人自行承担。
 
-**内核下载安装**:
-- 从 PVE 官方仓库下载指定内核版本
-- 自动处理依赖关系和冲突
-- 支持内核头文件和开发包安装
+完整 ULA 页面：https://pve.oowo.cc/ula
+该页面主要说明脚本的适用范围、风险边界、用户自担的操作责任，以及对网络中断、配置错误、数据损坏、业务不可用和衍生恢复成本的免责声明。
+执行备份恢复、迁移、Cloud-Init、磁盘调整、GPU 直通、宿主机网络或防火墙变更前，建议先完整阅读。
 
-**内核切换配置**:
-- 安全的内核切换机制
-- 自动更新 GRUB 引导配置
-- 支持多内核启动选项管理
+## Community
 
-#### 🐙 Ceph 存储支持
+- 官网：https://pve.oowo.cc
+- GitHub Issues：https://github.com/PVE-Tools/PVE-Tools-9/issues
+- QQ 群：1031976463
+- Telegram 群：https://t.me/pvetools233
+- Sponsor：https://pve.oowo.cc/sponsor
 
-**添加 ceph-squid 源**:
-- 适用于 PVE 8/9
-- 配置清华大学镜像源
+## License
 
-**添加 ceph-quincy 源**:
-- 适用于 PVE 7/8
-- 配置清华大学镜像源
+GPL-3.0. See [LICENSE](LICENSE).
 
-**卸载 Ceph**:
-- 停止所有 Ceph 服务
-- 删除 Ceph 相关软件包
-- 清理配置文件和数据
-
-### ⚠️ 注意事项
-
-- 🔒 **权限要求**: 必须使用 root 权限运行
-- 💾 **数据备份**: 重要操作前会自动备份配置文件
-- 🌐 **网络需求**: 换源功能需要稳定的网络连接
-- ⚡ **内存要求**: 删除 Swap 前请确保内存充足
-- 🔧 **硬件直通**: 需要硬件支持 IOMMU/VT-d 功能
-- 🌡️ **温度监控**: 需要硬件支持传感器检测
-- 🐙 **Ceph 功能**: 请根据您的 PVE 版本选择合适的 Ceph 源
-
-### 🐛 故障排除
-
-#### 常见问题
-
-**Q: 脚本提示"不是 PVE 环境"?**
-A: 请确保您在 Proxmox VE 系统上运行此脚本。
-
-**Q: 换源后更新失败?**
-A: 请检查网络连接，或尝试重新运行换源功能。
-
-**Q: 删除弹窗后仍然出现?**
-A: 请清除浏览器缓存或使用无痕模式访问。
-
-#### 获取帮助
-
-如遇到问题，请：
-1. 📋 查看脚本运行日志
-2. 🔍 检查系统环境是否符合要求
-3. 💬 在 GitHub Issues 中提交问题
-
-#### 内核管理常见问题
-
-**Q: 内核切换是否安全？**
-A: 是的，脚本会自动备份当前内核配置，并提供回滚选项。建议在生产环境切换前进行测试。
-
-**Q: 支持哪些内核版本？**
-A: 支持 PVE 官方仓库中的所有可用内核版本，包括稳定版和测试版。
-
-**Q: 切换内核后需要重启吗？**
-A: 是的，切换内核后需要重启系统才能生效新的内核。
-
-**Q: 如何恢复原来的内核？**
-A: 在 GRUB 启动菜单中选择原来的内核版本即可恢复。
-
-**Q: 内核切换会影响我的虚拟机吗？**
-A: 不会直接影响虚拟机，但新的内核可能会提供更好的硬件兼容性和性能。
-
----
-
-## 📄 开源协议
-
-本项目采用 MIT 协议发布，详见 [LICENSE](LICENSE) 文件。
-
-```
-MIT License
-
-Copyright (c) 2025 Sovitx IO
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-```
-
-## 🙏 特别感谢
-
-### 🌟 贡献者
-
-<a href="https://github.com/Mapleawaa/PVE-Tools-9/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=Mapleawaa/PVE-Tools-9" />
-</a>
-
-### 🏛️ 相关组织与项目
-
-- **[清华大学 TUNA 镜像站](https://mirrors.tuna.tsinghua.edu.cn/)** - 提供优质的镜像源服务
-- **[Proxmox VE 官方](https://www.proxmox.com/)** - 优秀的虚拟化平台
-- **[Debian 官方](https://www.debian.org/)** - 稳定可靠的系统基础
-- **[NodeSeek 论坛](https://www.nodeseek.com)** - 一个有效的主机信息聚集地，希望它能成长为一个有用的社群。
-- **[Linux.do 论坛](https://linux.do/)** - 一个真诚、友善、团结、专业，共建你我引以为荣之社区。
-- **[IDC Flare 论坛](https://idcflare.com)** - 一个新的域名、主机等信息集散地。
-
-
-### 💡 灵感来源
-
-- 感谢 PVE 社区的各位大佬分享的配置经验
-- 感谢代码参考：https://zhichao.org/posts/e0fe08
-- 参考了众多开源项目的最佳实践
-
-### 🎨 设计与界面
-
-- **ASCII 字符画** - 字符画设计灵感来源于社区创作
-- **配色方案** - 配色参考了现代终端美学
-
----
-
-<div align="center">
-
-### 🌟 如果这个项目对你有帮助，请给个 Star ⭐
-
-**用 ❤️ 由 AI Claude 4 和 Qwen3 联合打造**
-[**Qwen3** 是阿里云 Qwen 团队开发的大语言模型系列](https://github.com/QwenLM/Qwen3)
-
-[![GitHub](https://img.shields.io/badge/GitHub-SovitxNetworks-181717?logo=github&logoColor=white)](https://github.com/Mapleawaa)
-
-</div>
-<img src="https://api.star-history.com/svg?repos=Mapleawaa/PVE-Tools-9&type=Date)](https://www.star-history.com/#Mapleawaa/PVE-Tools-9&Date"> </img>

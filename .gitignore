@@ -1,2 +1,45 @@
-.codebuddy/
-.cache
+# Ignore dependencies
+node_modules/
+**/node_modules/
+bun.lockb
+
+# Ignore build outputs
+dist/
+**/dist/
+build/
+out/
+.temp/
+.vitepress/dist/
+.vitepress/cache/
+**/.vitepress/dist/
+**/.vitepress/cache/
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+*.tmp
+*.swp
+
+# Ignore log files
+*.log
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# Ignore IDE specific files
+.vscode/
+.idea/
+*.tsbuildinfo
+.eslintcache
+
+# Ignore environment files
+.env
+.env.*.local
+
+# Python
+__pycache__/
+*.pyc
+
+# BMad Method V6
+_bmad/
+_bmad-output/
+
+test.txt
