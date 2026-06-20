@@ -117,8 +117,8 @@ export default defineConfig({
   },
   themeConfig: {
     logo: {
-      light: '/logo-horizontal.svg',
-      dark: '/logo-horizontal-dark.svg'
+      light: '/logo.svg',
+      dark: '/logo-dark.svg'
     },
     nav: [
       { text: '首页', link: '/' },
